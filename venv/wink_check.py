@@ -11,8 +11,9 @@ def print_feature(feature, frame):
         end_cord_x = x + w
         end_cord_y = y + h
         cv2.rectangle(frame, (x, y), (end_cord_x, end_cord_y), color, stroke)
-def wink_check(left_eye,right_eye, frame):
+def wink_check(left_eye,right_eye, faces, frame):
     if(len(left_eye)+len(right_eye)==1):
+        print_feature(faces, frame)
         if(len(left_eye)!=0):
             print("Left")
             print_feature(left_eye, frame)
@@ -33,7 +34,7 @@ while (True):
     faces = face_cascade.detectMultiScale(gray, scaleFactor=2, minNeighbors=5)
     left_eye = left_eyes_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
     right_eye = right_eyes_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
-    wink_check(left_eye, right_eye, frame)
+    wink_check(left_eye, right_eye,faces, frame)
     cv2.imshow('frame', frame)
     if cv2.waitKey(20) & 0xFF == ord('q'):
         break
