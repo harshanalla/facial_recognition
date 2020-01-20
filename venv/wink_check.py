@@ -6,7 +6,7 @@ def print_feature(feature, frame):
         roi_gray = gray[y:y + h, x:x + w]  # (ycord_start, ycord_end)
         roi_color = frame[y:y + h, x:x + w]
 
-        color = (255, 0, 0)  # BGR 0-255
+        color = (255, 0, 0)  # BGR 0-255q
         stroke = 2
         end_cord_x = x + w
         end_cord_y = y + h
@@ -18,7 +18,7 @@ def wink_check(left_eye,right_eye, faces, frame):
             print("Left")
             print_feature(left_eye, frame)
         elif (len(right_eye)!=0):
-            print("Right")
+            print("Right")  
             print_feature(right_eye, frame)
 
 face_cascade = cv2.CascadeClassifier(
